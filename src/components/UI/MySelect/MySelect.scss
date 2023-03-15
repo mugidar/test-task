@@ -1,5 +1,6 @@
 .dropdown-container {
   position: relative;
+  max-width: 210px;
   text-align: left;
   border-bottom: 1px solid #ccc;
   position: relative;
@@ -8,11 +9,14 @@
 .dropdown-menu {
   position: absolute;
   overflow-y: scroll;
+  text-align: center;
   background-color: white;
-  height: 200px;
+  height: 100px;
   z-index: 1000;
 }
-
+.dropdown-selected-value {
+  font-size: 12px;
+}
 .dropdown-input {
   padding: 5px;
   display: flex;
@@ -29,16 +33,22 @@
   overflow: hidden;
   white-space: nowrap;
   width: 80px;
+  margin: 0 auto;
   padding: 5px;
   cursor: pointer;
 }
 
 .dropdown-item:hover {
-  background-color: #6f6f6f;
+  color: black;
 }
 .dropdown-item.selected {
-  background-color: #0d6efd;
-  color: #fff;
+  position: relative;
+  &::before {
+    content: "•";
+
+    font-weight: 600;
+    display: inline-block;
+  }
 }
 .dropdown-tags {
   display: flex;
@@ -46,11 +56,19 @@
   gap: 5px;
 }
 .dropdown-tag-item {
+
   background-color: #ddd;
   padding: 2px 4px;
   border-radius: 2px;
   display: flex;
   align-items: center;
+  .tag_name{
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 40px;
+  }
 }
 .dropdown-tag-close {
   display: flex;

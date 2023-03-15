@@ -7,14 +7,21 @@
   border-radius: 15px;
 }
 .myModal.active {
+  position: absolute;
+  gap: 5px;
+
+  margin-top: 102px;
+  left: -10px;
+  min-width: 80px;
   height: auto;
   background-color: rgb(255, 255, 255);
   display: flex;
   flex-wrap: wrap;
   z-index: 1000;
-  justify-content: center;
+
   align-items: flex-start;
-  padding: 2px;
+  padding: 5px;
+  box-shadow: 0 0 10px;
   img {
     width: 15px;
     height: 15px;

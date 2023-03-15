@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import useHover from "../../hooks/useHover";
 import EditableText from "../EditableText/EditableText";
 import ListHeaderItem from "../ListHeaderItem/ListHeaderItem";
@@ -8,20 +8,45 @@ import MyButton from "../UI/MyButton/MyButton";
 /////styles
 import styles from "./List.module.scss";
 const fakeData = [
-  { isChecked: false, item: "XXXX-", id: 1, company: "Kyivstar",title: "Blue" },
-  { isChecked: false, item: "XXXX-", id: 2, company: "Kyivstar",title: "Space greyffffffffffffff" },
-  { isChecked: false, item: "XXXX-", id: 3, company: "Kyivstar",title: "41 size" },
-  { isChecked: false, item: "XXXX-", id: 4, company: "Kyivstar",title: "32 gb" }
+  {
+    isChecked: false,
+    item: "XXXX-",
+    id: 1,
+    company: "Kyivstar",
+    title: "Blue"
+  },
+  {
+    isChecked: false,
+    item: "XXXX-",
+    id: 2,
+    company: "Kyivstar",
+    title: "Space greyffffffffffffff"
+  },
+  {
+    isChecked: false,
+    item: "XXXX-",
+    id: 3,
+    company: "Kyivstar",
+    title: "41 size"
+  },
+  {
+    isChecked: false,
+    item: "XXXX-",
+    id: 4,
+    company: "Kyivstar",
+    title: "32 gb"
+  }
 ];
 
 const List = () => {
   const [data, setData] = useState(fakeData);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [searchValue, setSearchValue] = useState([""]);
+  const [searchValue, setSearchValue] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
   const tableRef = useRef();
   const isHovered = useHover(tableRef);
-  console.table(data)
+
+  
   const theadFields = [
     { name: "" },
     { name: "Статус", options: [] },
@@ -46,8 +71,6 @@ const List = () => {
       return false;
     }
   };
-
-
 
   const handleChange = (obj, fieldName, newText) => {
     const foundItem = data.find((item) => item.id === obj.id);
@@ -82,6 +105,7 @@ const List = () => {
       ...prev,
       {
         isChecked: false,
+        company: "Kyivstar",
         item: "XXXX-",
         id: data.length + 1,
         title: "",
@@ -97,11 +121,26 @@ const List = () => {
         return acc;
       }, [])
     );
-
-
-  data.map((item) => console.log(searchValue.includes(item.title)))
-
   };
+
+  const filteredData = useMemo(() => {
+    if (searchValue.length === 0) return data;
+    
+    return data.filter((item) => {
+      let found = false;
+      for (let i = 0; i < searchValue.length; i++) {
+        if(searchValue[i] === "") {
+          setSearchValue([])
+          return data
+        }
+        if (item.title === searchValue[i]) {
+          found = true;
+        }
+      }
+      return found;
+    });
+  }, [data, searchValue]);
+
   return (
     <div className="table_wrapper">
       <table
@@ -124,11 +163,8 @@ const List = () => {
           </tr>
         </thead>
         <tbody>
-          {data.length > 0 ? (
-            data
-              // .filter((item) =>
-              // searchValue?.toLowerCase()?.includes(item?.title?.toLowerCase())
-              // )
+          {filteredData.length > 0 ? (
+            filteredData
               .map((item) => (
                 <ListItem
                   selectedRow={selectedRow}
@@ -144,7 +180,7 @@ const List = () => {
                 />
               ))
           ) : (
-            <tr>
+            <tr className={styles.empty_list}>
               <td colSpan={"100%"}>
                 <h1>List is empty</h1>
               </td>

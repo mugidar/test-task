@@ -1,3 +1,4 @@
+
 import styles from "./MyModal.module.scss";
 
 const MyModal = ({ children, visible, setVisible }) => {
@@ -5,15 +6,15 @@ const MyModal = ({ children, visible, setVisible }) => {
   if (visible) {
     rootClasses.push(styles.active);
   }
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setVisible(false);
+  };
+  
+
 
   return (
-    <div
-      onClick={(e) => {
-        setVisible(false);
-        e.stopPropagation();
-      }}
-      className={rootClasses.join(" ")}
-    >
+    <div onClick={handleClick} className={rootClasses.join(" ")}>
       {children}
     </div>
   );

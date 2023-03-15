@@ -1,7 +1,3 @@
-tr {
- 
-  background-color: #fff;
-}
 
 .selected {
   background-color: gray;
@@ -9,16 +5,20 @@ tr {
 
 .title {
   width: 100px;
-
+ font-weight: 300;
+  display: flex;
   position: relative;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  display: block;
-  overflow: hidden;
-  white-space: nowrap;
+  align-items: center;
 
   margin: 0 auto;
   font-size: 18px;
+  span{
+    text-decoration: none;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+  }
   img {
     width: 16px;
     height: 16px;
@@ -39,7 +39,7 @@ tr {
     vertical-align: middle;
   }
 }
-.id {
+.id { font-weight: 300;
   font-size: 18px;
   input {
     max-width: 30px;
@@ -47,8 +47,7 @@ tr {
 }
 
 .deleteBtn {
-  position: absolute;
-  transform: translateY(-10px);
+
   background-color: transparent;
   border: none;
   cursor: pointer;

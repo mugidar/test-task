@@ -1,27 +1,39 @@
 .table {
   width: 400px;
-  overflow: auto;
-  tbody {
+
+  overflow-y: scroll;
+  tbody {  max-height: 425px;
+    overflow-y: scroll;
+    tr {
+      transition: 0.4s;
+    }
     tr:hover {
-      background-color: rgba(81, 81, 81, 0.7);
+      background: #cacaca !important;
       transition: 0.4s;
     }
   }
 }
-
 .tableHovered {
   button {
     opacity: 0;
     transition: 0.4s;
     visibility: hidden;
   }
-  select {
-    appearance: none;
+
+  .arrow_down {
+    visibility: none;
   }
 }
 
 .buttons {
   display: flex;
+  margin-left: 15px;
   flex-direction: column;
   gap: 15px;
+  button {
+    border: 2px solid black;
+    border-radius: 4px;
+    font-size: 15px;
+    background-color: transparent;
+  }
 }

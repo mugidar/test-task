@@ -4,33 +4,25 @@ import styles from "./ListHeaderItem.module.scss";
 const ListHeaderItem = ({
   name,
   options,
-  handleSearchInput
+  handleSearchInput,isHovered
 }) => {
   return (
-    <>
+    
       <th>
         {name}
         <div>
           {options && (
             <>
               <MySelect
+              isHovered={isHovered}
                 onChange={handleSearchInput}
                 options={options}
                 isMulti={true}
-                placeHolder={"Select..."}
               />
-              <select onChange={handleSearchInput}>
-                {options.map((option, index) => (
-                  <option value={option.value} key={index}>
-                    {option?.name}
-                  </option>
-                ))}
-              </select>
             </>
           )}
         </div>
       </th>
-    </>
   );
 };
 
