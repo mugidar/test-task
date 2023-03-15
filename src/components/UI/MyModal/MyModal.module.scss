@@ -1,0 +1,23 @@
+.myModal {
+  position: relative;
+  width: 100px;
+  display: none;
+  z-index: 1000;
+  background-color: red;
+  border-radius: 15px;
+}
+.myModal.active {
+  height: auto;
+  background-color: green;
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 1000;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2px;
+  img {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+}

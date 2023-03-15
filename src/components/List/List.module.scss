@@ -1,0 +1,27 @@
+.table {
+  width: 400px;
+  overflow: auto;
+  tbody {
+    tr:hover {
+      background-color: rgba(81, 81, 81, 0.7);
+      transition: 0.4s;
+    }
+  }
+}
+
+.tableHovered {
+  button {
+    opacity: 0;
+    transition: 0.4s;
+    visibility: hidden;
+  }
+  select {
+    appearance: none;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
