@@ -99,7 +99,7 @@ const MySelect = ({
 
   const onItemClick = (option) => {
     let newValue;
-    console.log(option.name === "Все")
+
     if (option.name === "Все") setSelectedValue([]);
     if (isMulti) {
       if (selectedValue.findIndex((o) => o.value === option.value) >= 0) {

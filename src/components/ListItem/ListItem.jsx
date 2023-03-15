@@ -18,37 +18,45 @@ import MyModal from "../UI/MyModal/MyModal";
 const companies = [
   {
     name: "Kyivstar",
-    imgSrc: kyivstar  },
+    imgSrc: kyivstar
+  },
   {
     name: "FUa",
-    imgSrc:
-    fua  },
+    imgSrc: fua
+  },
   {
     name: "Delivery",
-    imgSrc:
-    delivery  },
+    imgSrc: delivery
+  },
   {
     name: "Rozetka",
-    imgSrc: rozetka  },
+    imgSrc: rozetka
+  },
   {
     name: "Meest",
-    imgSrc: meest  },
+    imgSrc: meest
+  },
   {
     name: "Modna kasta",
-    imgSrc: modna  },
+    imgSrc: modna
+  },
 
   {
     name: "UPS",
-    imgSrc: ups  },
+    imgSrc: ups
+  },
   {
     name: "EBay",
-    imgSrc:ebay },
+    imgSrc: ebay
+  },
   {
     name: "Autolux",
-    imgSrc: autolux  },
+    imgSrc: autolux
+  },
   {
     name: "Ukraine",
-    imgSrc: ukraine  }
+    imgSrc: ukraine
+  }
 ];
 
 const ListItem = ({
@@ -132,8 +140,11 @@ const ListItem = ({
             <img
               title={company.name}
               onClick={(e) => {
+                currentCompany.name === e.target.name
+                  ? alert("Вы уже выбрали эту компанию")
+                  : setModal(false);
                 oneItem.company = e.target.name;
-                setModal(false);
+                
               }}
               name={company.name}
               key={company.name}
